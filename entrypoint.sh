@@ -3,6 +3,8 @@
 #set -e at the top of your script will make the script exit with an error whenever an error occurs (and is not explicitly handled)
 set -eu
 
+TEMP_SFTP_FILE='../sftp'
+
 echo 'Connecting to SSH server and creating directory..'
 
 sshpass -p $4 ssh -o StrictHostKeyChecking=no -p $3 $1@$2 mkdir -p $6
