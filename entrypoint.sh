@@ -15,7 +15,7 @@ echo 'Starting file transfer..'
 # create a temporary file containing sftp commands
 printf "%s" "put -r $5 $6" >$TEMP_SFTP_FILE
 #-o StrictHostKeyChecking=no to avoid "Host key verification failed".
-sshpass -p "$4" sftp -b $TEMP_SFTP_FILE -P $3 $7 -o StrictHostKeyChecking=no $1@$2
+sshpass -p "$4" sftp -oBatchMode=no -b $TEMP_SFTP_FILE -P $3 $7 -o StrictHostKeyChecking=no $1@$2
 
 echo 'File transfer finished successfully!'
 exit 0
