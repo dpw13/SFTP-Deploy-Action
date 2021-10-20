@@ -19,11 +19,10 @@ then
     echo 'Starting compression...'
     tar -czvf $ARCHIVE_FILE $5
     echo 'Finishing compression...'
-    #-o StrictHostKeyChecking=no to avoid "Host key verification failed".
-    # sshpass -p $4 sftp -b $ARCHIVE_FILE -P $3 $7 -o StrictHostKeyChecking=no $1@$2
-    sshpass -p $4 sftp -P $3 $7 -o StrictHostKeyChecking=no $1@$2 <<-EOF
-    put -r $ARCHIVE_FILE $6
-    EOF
+# Formatting can't be resolved, feel free to PR if I am wrong.
+sshpass -p $4 sftp -P $3 $7 -o StrictHostKeyChecking=no $1@$2 <<-EOF
+put -r $ARCHIVE_FILE $6
+EOF
 else
     # create a temporary file containing sftp commands
     touch $TEMP_SFTP_FILE
