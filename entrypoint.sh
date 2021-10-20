@@ -4,8 +4,8 @@
 set -eu
 
 TSTAMP=$(date -I)
-TEMP_SFTP_FILE='../sftp'
-ARCHIVE_FILE='../archive-$TSTAMP.tar.gz'
+TEMP_SFTP_FILE="../sftp"
+ARCHIVE_FILE="../archive-$TSTAMP.tar.gz"
 
 echo 'Connecting to SSH server and creating directory..'
 
