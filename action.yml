@@ -1,5 +1,5 @@
 # action.yml
-name: 'SFTP Deploy'
+name: 'SFTP Deploy w/ Password'
 description: 'Deploy files to your server with SFTP and password authenticated SSH'
 inputs:
   username:
