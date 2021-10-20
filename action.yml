@@ -3,35 +3,36 @@ name: 'SFTP Deploy w/ Password'
 description: 'Deploy files to your server with SFTP and password authenticated SSH'
 inputs:
   username:
-    description: 'username'
+    description: 'Set this to your SFTP Username.'
     required: true
     default: 'root'
   server:
-    description: 'your SSH server'
+    description: 'Set this to your SFTP Server IP.'
     required: true
   port:
-    description: 'your SSH server port, defaults to 22'
+    description: 'Set this to your SFTP Port, default is 22.'
     required: true
     default: '22'
   ssh_password:
-    description: 'you SSH password'
+    description: 'Set this to your SFTP Port.'
     required: true
   local_path:
-    description: 'will transfer all files from this path'
+    description: 'Set this to the path to transfer from.'
     required: true
     default: ./*
   remote_path:
-    description: 'files will be transferred to this path'
+    description: 'Set this to the path to transfer to.'
     required: true
     default: /
-
   args:
-    description: 'sftp args'
+    description: 'Set this to any optional SFTP arguments.'
     required: false
-
   ssh_command:
-    description: 'execute command when on your server after deployment is successful'
+    description: 'Set this to any SSH commands you wish to run upon completion.'
     required: false
+  compress:
+    description: 'Set this to true if you wish to upload an archive, default is false.'
+    default: false
 
 runs:
   using: 'docker'
@@ -45,6 +46,7 @@ runs:
     - ${{ inputs.remote_path }}
     - ${{ inputs.args }}
     - ${{ inputs.ssh_command }}
+    - ${{ inputs.compress }}
 
 branding:
   icon: 'upload-cloud'
