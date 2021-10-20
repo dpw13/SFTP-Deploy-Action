@@ -46,7 +46,7 @@ then
 else
     echo 'SSH command being ran...'
 sshpass -p $4 sftp -P $3 $7 -o StrictHostKeyChecking=no $1@$2 <<-EOF
-cd $6;$8
+cd $6 && $8
 EOF
     echo 'SSH command completed!'
 fi
