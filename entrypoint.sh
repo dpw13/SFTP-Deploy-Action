@@ -45,7 +45,7 @@ then
     echo 'No SSH command specified, success!'
 else
     echo 'SSH command being ran...'
-    sshpass -p $4 ssh -o StrictHostKeyChecking=no $1@$2:$3 "cd $6;$8"
+    sshpass -p $4 ssh -o StrictHostKeyChecking=no $1@$2 -p $3 "cd $6;$8"
     echo 'SSH command completed!'
 fi
 
