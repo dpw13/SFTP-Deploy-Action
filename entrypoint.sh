@@ -18,5 +18,14 @@ printf "%s" "put -r $5 $6" >$TEMP_SFTP_FILE
 sshpass -p "$4" sftp -oBatchMode=no -b $TEMP_SFTP_FILE -P $3 $7 -o StrictHostKeyChecking=no $1@$2
 
 echo 'File transfer finished successfully!'
-exit 0
 
+if [ -z "$8" ]
+then
+    echo 'No SSH command specified, success!'
+else
+    echo 'SSH command being ran...'
+    ssh -o StrictHostKeyChecking=no -i $TEMP_SSH_PRIVATE_KEY_FILE $1@$2 "cd $6;$8"
+    echo 'SSH command completed!'
+fi
+
+exit 0

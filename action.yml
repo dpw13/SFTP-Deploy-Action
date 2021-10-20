@@ -5,13 +5,14 @@ inputs:
   username:
     description: 'username'
     required: true
+    default: 'root'
   server:
     description: 'your SSH server'
     required: true
   port:
     description: 'your SSH server port, defaults to 22'
     required: true
-    default: "22"
+    default: '22'
   ssh_password:
     description: 'you SSH password'
     required: true
@@ -28,6 +29,9 @@ inputs:
     description: 'sftp args'
     required: false
 
+  ssh_command:
+    description: 'execute command when on your server after deployment is successful'
+    required: false
 
 runs:
   using: 'docker'
@@ -40,6 +44,7 @@ runs:
     - ${{ inputs.local_path }}
     - ${{ inputs.remote_path }}
     - ${{ inputs.args }}
+    - ${{ inputs.ssh_command }}
 
 branding:
   icon: 'upload-cloud'
