@@ -36,6 +36,9 @@ SSH server port , default `22`
 ### `args`
 args of sftp cmd, E.g.`-o ConnectTimeout=5`
 
+### `ssh_command`
+set a command to run after deployment.
+
 
 ## Action Example
 
