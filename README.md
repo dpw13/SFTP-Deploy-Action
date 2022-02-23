@@ -36,6 +36,10 @@ SSH server port , default `22`
 ### `args`
 args of sftp cmd, E.g.`-o ConnectTimeout=5`
 
+### `sftp_only`
+
+connection via sftp protocol only, the default value is `false`. If your port only accepts the sftp protocol, set this option to `true`. However, please note that when this option is set to `true`, the remote folder will not be created automatically.
+
 ### `ssh_command`
 set a command to run after deployment.
 

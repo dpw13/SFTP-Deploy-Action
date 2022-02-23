@@ -7,14 +7,16 @@ TSTAMP=$(date -I)
 TEMP_SFTP_FILE="../sftp"
 ARCHIVE_FILE="../archive-$TSTAMP.tar.gz"
 
-echo 'Connecting to SSH server and creating directory..'
-
-sshpass -p "$4" ssh -o StrictHostKeyChecking=no -p $3 $1@$2 mkdir -p $6
-
-echo 'Connection to SSH server and directory creation finished successfully!'
+if test $8 = "true"; then
+  echo "Connection via sftp protocol only, skip the command to create a directory"
+else
+  echo 'Connecting to SSH server and creating directory..'
+  sshpass -p "$4" ssh -o StrictHostKeyChecking=no -p $3 $1@$2 mkdir -p $6
+  echo 'Connection to SSH server and directory creation finished successfully!'
+fi
 
 echo 'Starting file transfer..'
-if $9
+if $10
 then
     echo 'Starting compression...'
     tar -czvf $ARCHIVE_FILE $5
@@ -40,12 +42,12 @@ fi
 
 echo 'File transfer finished successfully!'
 
-if [ -z "$8" ]
+if [ -z "$9" ]
 then
     echo 'No SSH command specified, success!'
 else
     echo 'SSH command being ran...'
-    sshpass -p $4 ssh -o StrictHostKeyChecking=no $1@$2 -p $3 "cd $6;$8"
+    sshpass -p $4 ssh -o StrictHostKeyChecking=no $1@$2 -p $3 "cd $6;$9"
     echo 'SSH command completed!'
 fi
 

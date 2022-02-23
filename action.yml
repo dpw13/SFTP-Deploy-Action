@@ -27,6 +27,10 @@ inputs:
   args:
     description: 'Set this to any optional SFTP arguments.'
     required: false
+  sftp_only:
+    description: 'connection via sftp protocol only'
+    required: false
+    default: false
   ssh_command:
     description: 'Set this to any SSH commands you wish to run upon completion.'
     required: false
@@ -45,6 +49,7 @@ runs:
     - ${{ inputs.local_path }}
     - ${{ inputs.remote_path }}
     - ${{ inputs.args }}
+    - ${{ inputs.sftp_only }}
     - ${{ inputs.ssh_command }}
     - ${{ inputs.compress }}
 
