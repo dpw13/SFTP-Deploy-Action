@@ -28,7 +28,7 @@ inputs:
     description: 'Set this to any optional SFTP arguments.'
     required: false
   sftp_only:
-    description: 'connection via sftp protocol only'
+    description: 'Establish connection via sftp protocol only'
     required: false
     default: false
   ssh_command:
@@ -36,6 +36,9 @@ inputs:
     required: false
   compress:
     description: 'Set this to true if you wish to upload an archive, default is false.'
+    default: false
+  mirror:
+    description: 'Set this to true to mirror the entire directory structure.'
     default: false
 
 runs:
@@ -52,6 +55,7 @@ runs:
     - ${{ inputs.sftp_only }}
     - ${{ inputs.ssh_command }}
     - ${{ inputs.compress }}
+    - ${{ inputs.mirror }}
 
 branding:
   icon: 'upload-cloud'

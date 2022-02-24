@@ -43,6 +43,8 @@ connection via sftp protocol only, the default value is `false`. If your port on
 ### `ssh_command`
 set a command to run after deployment.
 
+### `mirror`
+use LFTP to mirror the directory tree instead of using SFTP to copy into an existing tree.
 
 ## Action Example
 
