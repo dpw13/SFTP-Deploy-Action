@@ -16,8 +16,7 @@ else
 fi
 
 echo 'Starting file transfer..'
-if $10
-then
+if test $10 = "true"; then
     echo 'Starting compression...'
     tar -czvf $ARCHIVE_FILE $5
     echo 'Finishing compression...'
@@ -25,8 +24,7 @@ then
 sshpass -p $4 sftp -P $3 $7 -o StrictHostKeyChecking=no $1@$2 <<-EOF
 put -r $ARCHIVE_FILE $6
 EOF
-elif $11
-then
+elif test $11 = "true"; then
     # Use lftp to mirror files
     lftp -e "set sftp:auto-confirm 1; mirror -R -x .git -x .github $7 $5 $6; quit" -u $1 --password "$4" sftp://$2
 else
